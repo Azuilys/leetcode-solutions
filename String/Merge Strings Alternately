@@ -1,0 +1,55 @@
+#include <cstring>
+#include <string>
+class Solution {
+public:
+    string mergeAlternately(string word1, string word2) {
+
+        const int NUM_CHARS = 1000;
+        
+        char cStr1[NUM_CHARS];
+        char cStr2[NUM_CHARS];
+        char cStr3[NUM_CHARS * 2];
+
+        strcpy(cStr1, word1.c_str());
+        strcpy(cStr2, word2.c_str());
+
+        int i, x, o;
+        i = x = o = 0;
+
+        while ((cStr1[x] != '\0') && (cStr2[o] != '\0')) {
+
+            cStr3[i] = cStr1[x];
+            i++;
+            cStr3[i] = cStr2[o];
+
+            i++;
+            x++;
+            o++;
+        }
+
+        if (cStr1[x] == '\0') {
+
+            while (cStr2[o] != '\0') {
+                
+                cStr3[i] = cStr2[o];
+                o++;
+                i++;
+            }
+        }
+
+        if (cStr2[o] == '\0') {
+
+            while (cStr1[x] != '\0') {
+
+                cStr3[i] = cStr1 [x];
+                x++;
+                i++;
+            }
+        }
+
+        cStr3[i] = '\0';
+
+        return cStr3;
+
+    }
+};
