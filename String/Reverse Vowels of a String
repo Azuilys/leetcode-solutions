@@ -1,0 +1,82 @@
+// Source : https://leetcode.com/problems/reverse-vowels-of-a-string/?envType=study-plan-v2&envId=leetcode-75
+// Authour: Ackienee George
+// Date   : 08/12/2025
+
+/*
+Given a string s, reverse only all the vowels in the string and return it.
+The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
+
+Example 1:
+Input: s = "IceCreAm"
+Output: "AceCreIm"
+
+Explanation:
+The vowels in s are ['I', 'e', 'e', 'A']. On reversing the vowels, s becomes "AceCreIm".
+
+Example 2:
+Input: s = "leetcode"
+Output: "leotcede"
+
+Constraints:
+1 <= s.length <= 3 * 105
+s consist of printable ASCII characters.
+*/
+
+/* 
+UMPIRE:
+
+UNDERSTAND:
+Problem: Reverse Meaning: The last vowel in the string becomes the first vowel in the string. The second to last vowel in the string becomes the second vowel in the string and so on.
+
+MATCH: 
+Pointers or C-Strings
+
+PLAN:
+Input: strS[]
+
+FIND LENGTH OF strS[]
+DECLEAR cStr[]
+
+FOR EVER CHAR OF strS[] (STARTING FROM LAST CHAR)
+  IF CHAR IS VOWEL
+    SAVE TO cStr[]
+
+FOR EVER CHAR OF strS[] 
+  IF CHAR IS VOWEL
+    strS[] EQUALS cStr[]
+
+Output/ Return: strSReversed[]
+
+*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Solution {
+public:
+    string reverseVowels(string s) {
+
+        int StrSlen = s.length();
+        char* CStr = new char[StrSlen + 1];
+
+        int x = 0;
+        for (int i = StrSlen - 1; i >= 0; i--) {
+            if ( (s[i] == 'a') || (s[i] == 'e') || (s[i] == 'i') || (s[i] == 'o') || (s[i] == 'u') || (s[i] == 'A') || (s[i] == 'E') || (s[i] == 'I') || (s[i] == 'O') || (s[i] == 'U') ) {
+                CStr[x] = s[i];
+                x++;
+            }
+        }
+        CStr[x] = '\0';
+
+        x = 0;
+        for (int i = 0; i < StrSlen; i++) {
+            if ( (s[i] == 'a') || (s[i] == 'e') || (s[i] == 'i') || (s[i] == 'o') || (s[i] == 'u') || (s[i] == 'A') || (s[i] == 'E') || (s[i] == 'I') || (s[i] == 'O') || (s[i] == 'U') ) {
+                s[i] = CStr[x];
+                x++;
+            }
+        }
+
+        return s;        
+    }
+};
